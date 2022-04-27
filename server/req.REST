@@ -4,3 +4,22 @@ Content-Type: application/json
 {
   "name": "Léo"
 }
+
+###
+
+GET  http://localhost:8080/api/crewMembers
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/api/crewMember/626960966b9ba0f9d5793240
+Content-Type: application/json
+
+{
+  "name": "John Doe updated !!"
+}
+
+###
+
+DELETE http://localhost:8080/api/crewMember/626960966b9ba0f9d5793240
+Content-Type: application/json
