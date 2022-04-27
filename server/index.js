@@ -7,14 +7,18 @@ const app = express();
 app.use(express.json());
 
 // PORT
-const PORT = process.env.PORT || 5500;
+// const PORT = process.env.PORT || 8081;
+const PORT = 8080;
+
+// Import routes
+const CrewMemberRoute = require('./routes/crewMember');
 
 // Connect to Mongodb
 mongoose.connect(process.env.DB_CONNECT)
   .then(() => console.log('Database connected'))
   .catch(err => console.log(err))
 
-
+app.use('/', CrewMemberRoute);
 
 // Add Port and connect to server
 app.listen(PORT, () => console.log("server connected"));
