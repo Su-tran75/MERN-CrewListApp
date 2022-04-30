@@ -1,0 +1,38 @@
+.crew-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.crew-member {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+
+	.crew-member-name {
+		width: 60%;
+	}
+
+	.btn {
+		border: none;
+		border-radius: 6px;
+		cursor: pointer;
+		padding: 10px;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.update-button {
+		background-color: goldenrod;
+		color: #fff;
+		font-weight: bold;
+	}
+	.delete-button {
+		background-color: rgb(214, 81, 81);
+		color: #fff;
+		font-weight: bold;
+	}
+}
