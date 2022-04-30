@@ -1,0 +1,28 @@
+.form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 50px;
+
+	.input-form {
+		padding: 10px;
+		width: 85%;
+		border-radius: 6px;
+		border: 1px solid #eee;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.add-button {
+		background-color: #008080;
+		color: #fff;
+		font-weight: bold;
+		border: none;
+		border-radius: 6px;
+		padding: 10px;
+		cursor: pointer;
+	}
+}
