@@ -1,9 +1,8 @@
-import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import './form.scss'
 
-const Form = () => {
+const Form = ({ list, setList }) => {
   const [name, setName] = useState('');
 
   // add new crew member to db
@@ -11,6 +10,7 @@ const Form = () => {
     e.preventDefault();
     try {
       const res = await axios.post('http://localhost:8080/api/crewMember', { name: name })
+      setList(prev => [...prev, res.data])
       console.log(res);
       setName('');
     } catch (err) {
