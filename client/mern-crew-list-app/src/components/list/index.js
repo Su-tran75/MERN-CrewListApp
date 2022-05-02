@@ -4,7 +4,7 @@ import axios from 'axios';
 import './list.scss'
 
 const List = ({ list, setList }) => {
-  // const [list, setList] = useState([]);
+  const [isUpdating, setIsUpdating] = useState('')
 
   // create function to fetch all crew members from db -- we will use useEffect hook
   useEffect(() => {
@@ -32,6 +32,15 @@ const List = ({ list, setList }) => {
     }
   }
 
+  // update crew member
+  // before updating crew member, we need to show input field where we will create our updated crew member
+  const renderUpdatedform = () => (
+    <form className="update-form">
+      <input className="update-new-input" type="text" placeholder="Update Crew Member name"></input>
+      <button className="update-new-button btn" type="submit">Update</button>
+    </form>
+  )
+
   return (
     <div className="crew-list">
       {/* {_.map(list, (item) => {
@@ -45,9 +54,16 @@ const List = ({ list, setList }) => {
       {
         list.map(item => (
           <div className="crew-member" key={item.id}>
-            <p className="crew-member-name">{item.name}</p>
-            <button className="update-button btn">Update</button>
-            <button className="delete-button btn" onClick={() => { deleteCrewMember(item._id) }}>Delete</button>
+            {
+              isUpdating === item._id
+                ? renderUpdatedform()
+                : <>
+
+                  <p className="crew-member-name">{item.name}</p>
+                  <button className="update-button btn" onClick={() => { setIsUpdating(item._id) }}>Update</button>
+                  <button className="delete-button btn" onClick={() => { deleteCrewMember(item._id) }}>Delete</button>
+                </>
+            }
           </div>
         ))
       }

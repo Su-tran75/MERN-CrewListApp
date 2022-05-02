@@ -35,4 +35,23 @@
 		color: #fff;
 		font-weight: bold;
 	}
+
+	.update-form {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+
+		.update-new-input {
+			width: 80%;
+			border: none;
+			border-bottom: 1px solid #008080;
+			outline: none;
+		}
+
+		.update-new-button {
+			background-color: cornflowerblue;
+			color: #fff;
+			font-weight: bold;
+		}
+	}
 }
