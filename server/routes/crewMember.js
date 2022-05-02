@@ -11,7 +11,7 @@ router.post('/api/crewMember', async (req, res) => {
     })
     // Save this crew member in the db
     const saveCrewMember = await newCrewMember.save()
-    res.status(200).json('Crew Member Added Successfully.');
+    res.status(200).json(saveCrewMember);
   } catch (err) {
     res.json(err)
   }
