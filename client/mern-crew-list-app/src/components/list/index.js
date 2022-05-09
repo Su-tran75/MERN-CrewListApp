@@ -4,14 +4,15 @@ import axios from 'axios';
 import './list.scss'
 
 const List = ({ list, setList }) => {
-  const [isUpdating, setIsUpdating] = useState('')
+  const [isUpdating, setIsUpdating] = useState('');
+  const [updatedName, setUpdatedName] = useState('');
 
   // create function to fetch all crew members from db -- we will use useEffect hook
   useEffect(() => {
     const getList = async () => {
       try {
         const res = await axios.get('http://localhost:8080/api/crewMembers')
-        console.log("fetch crew list", res.data)
+        // console.log("fetch crew list", res.data)
         setList(res.data)
       } catch (err) {
         console.log(err)
@@ -33,10 +34,23 @@ const List = ({ list, setList }) => {
   }
 
   // update crew member
+  const updateCrewMember = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await axios.put(`http://localhost:8080/api/crewMember/${isUpdating}`, { name: updatedName })
+      console.log(res.data)
+      const updatedCrewMemberIndex = list.findIndex(item => item._id === isUpdating);
+      const updatedCrewMember = list[updatedCrewMemberIndex].name = updatedName;
+      setUpdatedName('');
+      setIsUpdating('');
+    } catch (err) {
+      console.log(err)
+    }
+  }
   // before updating crew member, we need to show input field where we will create our updated crew member
-  const renderUpdatedform = () => (
-    <form className="update-form">
-      <input className="update-new-input" type="text" placeholder="Update Crew Member name"></input>
+  const renderUpdatedForm = () => (
+    <form className="update-form" onSubmit={(e) => { updateCrewMember(e) }}>
+      <input className="update-new-input" type="text" placeholder="Update Crew Member name" onChange={e => { setUpdatedName(e.target.value) }} value={updatedName} ></input>
       <button className="update-new-button btn" type="submit">Update</button>
     </form>
   )
@@ -56,9 +70,8 @@ const List = ({ list, setList }) => {
           <div className="crew-member" key={item.id}>
             {
               isUpdating === item._id
-                ? renderUpdatedform()
+                ? renderUpdatedForm()
                 : <>
-
                   <p className="crew-member-name">{item.name}</p>
                   <button className="update-button btn" onClick={() => { setIsUpdating(item._id) }}>Update</button>
                   <button className="delete-button btn" onClick={() => { deleteCrewMember(item._id) }}>Delete</button>

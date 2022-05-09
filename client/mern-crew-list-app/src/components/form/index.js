@@ -1,10 +1,7 @@
-import { useState } from 'react';
 import axios from 'axios';
 import './form.scss'
 
-const Form = ({ list, setList }) => {
-  const [name, setName] = useState('');
-
+const Form = ({ list, setList, name, setName }) => {
   // add new crew member to db
   const addCrewMember = async (e) => {
     e.preventDefault();
