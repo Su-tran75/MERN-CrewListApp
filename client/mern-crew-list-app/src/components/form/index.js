@@ -18,7 +18,7 @@ const Form = ({ list, setList, name, setName }) => {
   return (
     <form className="form" onSubmit={e => addCrewMember(e)}>
       <input className="input-form" type="text" placeholder="Add crew member" onChange={(e) => { setName(e.target.value); }} value={name} />
-      <button className="add-button" type="submit">Add</button>
+      <button className="add-button" type="submit">+</button>
     </form>
   )
 }
