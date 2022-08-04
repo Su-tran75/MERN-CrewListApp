@@ -2,13 +2,25 @@
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+
+	@media screen and (max-width: 500px) {
+		grid-template-columns: 1fr;
+	}
+
+	@media only screen and (max-width: 800px) and (min-width: 500px) {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 .crew-member {
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	margin: 10px 20px;
+	padding: 10px 20px;
+
+	&:nth-child(even) {
+		background-color: rgb(236, 240, 241);
+	}
 
 	.crew-member-name {
 		width: 40%;
