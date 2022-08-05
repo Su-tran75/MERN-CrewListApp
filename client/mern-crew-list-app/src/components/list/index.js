@@ -73,7 +73,7 @@ const List = ({ list, setList }) => {
                 ? renderUpdatedForm()
                 : <>
                   <p className="crew-member-name">{item.name}</p>
-                  <button className="update-button btn" onClick={() => { setIsUpdating(item._id) }}>Update</button>
+                  <button className="update-button btn" onClick={() => { setIsUpdating(item._id); setUpdatedName(item.name) }}>Update</button>
                   <button className="delete-button btn" onClick={() => { deleteCrewMember(item._id) }}>Delete</button>
                 </>
             }
